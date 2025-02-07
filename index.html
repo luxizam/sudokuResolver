@@ -19,6 +19,7 @@
             }
         }
 
+
         class Casilla {
             constructor(posicion, vectores, ocupado = false, numero = 0) {
                 this.posicion = posicion;      // Objeto de tipo Posicion
@@ -30,8 +31,6 @@
 
         // Crea un vector de 81 posiciones.
         let matrizPrincipal = new Array(9);
-
-
 
         /*
          [0,0] [0,1] [0,2]     [1,0] [1,1] [1,2]     [2,0] [2,1] [2,2]  
@@ -55,7 +54,7 @@
 
         let vectorHorizontal = [];
         let vectorVertical = [];
-
+        
         
 
         let vectorVerticalLinea1 = [
@@ -217,21 +216,51 @@
         let puntoEnVectorHorizontal = buscarPosicionHorizontal(vectorHorizontal, 4, 5);
         let puntoEnVectorVertical = buscarPosicionVertical(vectorVertical, 4, 5);
 
+
         console.log(puntoEnVectorHorizontal);
 
 
+        let vectorGrupal = [];
 
 
+        function recorrerSudokuPorBloques() {
+            let contador = 0;
+            let tmpVectorGrupal = [];
 
+            for (let i = 0; i < 9; i++) {
+
+                let tmpVectorGrupal = [];
+
+                for (let k = 0; k < 9; k++ ) {
+                    
+                    //console.log("x:"+i + "    " + "k"+k);
+
+                    tmpVectorGrupal.push(new Posicion(i, k));
+                }
+
+                vectorGrupal.push(tmpVectorGrupal);
+                tmpVectorGrupal = [];
+
+            }
+        }
+
+        // Llamamos a la función
+        recorrerSudokuPorBloques();
+
+        //console.log(vectorGrupal);
+
+        let puntoEnVectorGrupal = buscarPosicionVertical(vectorGrupal, 4, 5);
+        
+        console.log(puntoEnVectorGrupal);
 
 
         for (let i = 0; i < 9; i++) {
 
             //Estos vectores son los encargados de comprobar que lineas tenemos que comprobar la suma.
             
-            let vectorHorizontal= [new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0)];
-            let vectorVertical = [new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0)];
-            let vectorGrupal = [new Posicion(i, 0),new Posicion(i, 1),new Posicion(i, 2),new Posicion(i, 3),new Posicion(i, 4),new Posicion(i, 5),new Posicion(i, 6),new Posicion(i, 7),new Posicion(i, 8)];
+            // let vectorHorizontal= [new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0)];
+            // let vectorVertical = [new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0),new Posicion(0, 0)];
+            // let vectorGrupal = [new Posicion(i, 0),new Posicion(i, 1),new Posicion(i, 2),new Posicion(i, 3),new Posicion(i, 4),new Posicion(i, 5),new Posicion(i, 6),new Posicion(i, 7),new Posicion(i, 8)];
 
 
             let casillaEjemplo0 = new Casilla(new Posicion(i, 0), [vectorHorizontal, vectorVertical, vectorGrupal], false, 0);
