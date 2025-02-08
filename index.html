@@ -22,11 +22,11 @@
 
         class Casilla {
             constructor(posicion, vectores, ocupado = false, numero = 0) {
-                this.numero = numero;
                 this.posicion = posicion;      // Objeto de tipo Posicion
                 this.vectores = vectores;      // Array con dos elementos de tipo Posicion
                 this.ocupado = ocupado;    // Booleano que indica si está rellenado
                 this.posiblesValores = new Array(9).fill(null); // Array vacio de los posibles valores.
+                this.numero = numero; // Número entero asociado a la casilla
             }
 
             ocuparCasilla(numero) {
@@ -346,56 +346,56 @@
         // Rellenar matriz con datos
         //===========================
         
-        matrizPrincipal[0][0].numero = 0;
+        matrizPrincipal[0][0].numero = 8;
         matrizPrincipal[0][1].numero = 0;
-        matrizPrincipal[0][2].numero = 0;
+        matrizPrincipal[0][2].numero = 1;
         matrizPrincipal[0][3].numero = 0;
         matrizPrincipal[0][4].numero = 0;
         matrizPrincipal[0][5].numero = 0;
-        matrizPrincipal[0][6].numero = 0;
-        matrizPrincipal[0][7].numero = 0;
-        matrizPrincipal[0][8].numero = 0;
+        matrizPrincipal[0][6].numero = 6;
+        matrizPrincipal[0][7].numero = 7;
+        matrizPrincipal[0][8].numero = 2;
         matrizPrincipal[1][0].numero = 0;
         matrizPrincipal[1][1].numero = 0;
-        matrizPrincipal[1][2].numero = 0;
+        matrizPrincipal[1][2].numero = 7;
         matrizPrincipal[1][3].numero = 0;
-        matrizPrincipal[1][4].numero = 0;
-        matrizPrincipal[1][5].numero = 0;
-        matrizPrincipal[1][6].numero = 0;
+        matrizPrincipal[1][4].numero = 1;
+        matrizPrincipal[1][5].numero = 3;
+        matrizPrincipal[1][6].numero = 9;
         matrizPrincipal[1][7].numero = 0;
-        matrizPrincipal[1][8].numero = 0;
+        matrizPrincipal[1][8].numero = 4;
         matrizPrincipal[2][0].numero = 0;
-        matrizPrincipal[2][1].numero = 0;
-        matrizPrincipal[2][2].numero = 0;
+        matrizPrincipal[2][1].numero = 6;
+        matrizPrincipal[2][2].numero = 4;
         matrizPrincipal[2][3].numero = 0;
-        matrizPrincipal[2][4].numero = 0;
-        matrizPrincipal[2][5].numero = 0;
+        matrizPrincipal[2][4].numero = 8;
+        matrizPrincipal[2][5].numero = 2;
         matrizPrincipal[2][6].numero = 0;
         matrizPrincipal[2][7].numero = 0;
         matrizPrincipal[2][8].numero = 0;
         matrizPrincipal[3][0].numero = 0;
-        matrizPrincipal[3][1].numero = 0;
-        matrizPrincipal[3][2].numero = 0;
+        matrizPrincipal[3][1].numero = 1;
+        matrizPrincipal[3][2].numero = 5;
         matrizPrincipal[3][3].numero = 0;
         matrizPrincipal[3][4].numero = 0;
-        matrizPrincipal[3][5].numero = 0;
+        matrizPrincipal[3][5].numero = 3;
         matrizPrincipal[3][6].numero = 0;
         matrizPrincipal[3][7].numero = 0;
-        matrizPrincipal[3][8].numero = 0;
+        matrizPrincipal[3][8].numero = 8;
         matrizPrincipal[4][0].numero = 0;
-        matrizPrincipal[4][1].numero = 0;
+        matrizPrincipal[4][1].numero = 7;
         matrizPrincipal[4][2].numero = 0;
-        matrizPrincipal[4][3].numero = 0;
-        matrizPrincipal[4][4].numero = 0;
+        matrizPrincipal[4][3].numero = 4;
+        matrizPrincipal[4][4].numero = 2;
         matrizPrincipal[4][5].numero = 0;
         matrizPrincipal[4][6].numero = 0;
         matrizPrincipal[4][7].numero = 0;
-        matrizPrincipal[4][8].numero = 0;
+        matrizPrincipal[4][8].numero = 1;
         matrizPrincipal[5][0].numero = 0;
-        matrizPrincipal[5][1].numero = 0;
+        matrizPrincipal[5][1].numero = 9;
         matrizPrincipal[5][2].numero = 0;
         matrizPrincipal[5][3].numero = 0;
-        matrizPrincipal[5][4].numero = 0;
+        matrizPrincipal[5][4].numero = 1;
         matrizPrincipal[5][5].numero = 0;
         matrizPrincipal[5][6].numero = 0;
         matrizPrincipal[5][7].numero = 0;
@@ -403,30 +403,30 @@
         matrizPrincipal[6][0].numero = 0;
         matrizPrincipal[6][1].numero = 0;
         matrizPrincipal[6][2].numero = 0;
-        matrizPrincipal[6][3].numero = 0;
-        matrizPrincipal[6][4].numero = 0;
-        matrizPrincipal[6][5].numero = 0;
+        matrizPrincipal[6][3].numero = 3;
+        matrizPrincipal[6][4].numero = 9;
+        matrizPrincipal[6][5].numero = 6;
         matrizPrincipal[6][6].numero = 0;
-        matrizPrincipal[6][7].numero = 0;
-        matrizPrincipal[6][8].numero = 0;
+        matrizPrincipal[6][7].numero = 8;
+        matrizPrincipal[6][8].numero = 4;
         matrizPrincipal[7][0].numero = 0;
-        matrizPrincipal[7][1].numero = 0;
+        matrizPrincipal[7][1].numero = 3;
         matrizPrincipal[7][2].numero = 0;
         matrizPrincipal[7][3].numero = 0;
         matrizPrincipal[7][4].numero = 0;
-        matrizPrincipal[7][5].numero = 0;
-        matrizPrincipal[7][6].numero = 0;
-        matrizPrincipal[7][7].numero = 0;
-        matrizPrincipal[7][8].numero = 0;
-        matrizPrincipal[8][0].numero = 0;
+        matrizPrincipal[7][5].numero = 5;
+        matrizPrincipal[7][6].numero = 1;
+        matrizPrincipal[7][7].numero = 9;
+        matrizPrincipal[7][8].numero = 6;
+        matrizPrincipal[8][0].numero = 6;
         matrizPrincipal[8][1].numero = 0;
         matrizPrincipal[8][2].numero = 0;
         matrizPrincipal[8][3].numero = 0;
-        matrizPrincipal[8][4].numero = 0;
-        matrizPrincipal[8][5].numero = 0;
+        matrizPrincipal[8][4].numero = 2;
+        matrizPrincipal[8][5].numero = 1;
         matrizPrincipal[8][6].numero = 0;
         matrizPrincipal[8][7].numero = 0;
-        matrizPrincipal[8][8].numero = 0;
+        matrizPrincipal[8][8].numero = 5;
         
 
         // // Recorrer la matriz y sus elementos
