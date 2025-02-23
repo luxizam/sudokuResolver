@@ -9,7 +9,71 @@
     <h1>arrays de javascript</h1>
     <ul id="usuarios"></ul>
 
+
+    <button onclick="miFuncion()">Haz clic aquí</button>
+
+
+    <style>
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(9, 1fr);
+          gap: 5px;
+          max-width: 500px;
+          margin: 20px auto;
+        }
+    
+        .grid-item {
+          color: white;
+          font-family: Comic Sans MS, sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 5px;
+          padding: 10px;
+          font-size: 1.2rem;
+        }
+    
+        /* Colores para cada grupo de 3x3 */
+        .group-1 { background-color: #1e3a8a; } /* Azul marino */
+        .group-2 { background-color: #2563eb; } /* Azul */
+        .group-3 { background-color: #3b82f6; } /* Azul claro */
+        .group-4 { background-color: #059669; } /* Verde */
+        .group-5 { background-color: #10b981; } /* Verde claro */
+        .group-6 { background-color: #14b8a6; } /* Verde-agua */
+        .group-7 { background-color: #d97706; } /* Naranja oscuro */
+        .group-8 { background-color: #f59e0b; } /* Naranja */
+        .group-9 { background-color: #fbbf24; } /* Amarillo */
+      </style>
+    </head>
+    <body>
+      <div class="grid-container">
+        <!-- Generar la cuadrícula con grupos de colores -->
+        <script>
+          for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
+              // Determinar el grupo según la posición
+              let group = Math.floor(row / 3) * 3 + Math.floor(col / 3) + 1;
+              let number = row * 9 + col + 1;
+              //document.write(`<div class="grid-item group-${group}" id=${row}${col}>${number}</div>`);
+              document.write(`<div class="grid-item group-${group}" id=${row}${col}>0</div>`);
+            }
+          }
+        </script>
+      </div>
+
+      <p id="mensaje"></p>
+
+
+    </body>
+
+
     <script>
+
+
+        function miFuncion() {
+            document.getElementById('mensaje').innerText = '¡El botón ha sido presionado!';
+        }
+
         
         
         class Posicion {
@@ -50,14 +114,8 @@
             }
 
              // Método para añadir un número en una posición específica del array valores
-            agregarValorPosibleValores(pos, num) {
-                if (pos < 0 || pos >= 8) {
-                    throw new Error("La posición debe estar entre 0 y 8.");
-                }
-                if (typeof num !== "number") {
-                    throw new Error("El valor debe ser un número.");
-                }
-                this.posiblesValores[pos] = num;
+            agregarValorPosibleValores(num) {
+                this.posiblesValores[num] = num;
             }
 
             // Método para borrar un número en una posición específica del array valores
@@ -98,16 +156,11 @@
          [6,6] [6,7] [6,8]     [7,6] [7,7] [7,8]     [8,6] [8,7] [8,8]
         */
 
-        let contadorIzquiero = 0;
-        let contadorDerecho = 0;
-
         //Creacion de array que contengan las lineas de comprobacion ,,, vectorHorizontal , vectorVertical , vectorGrupal
         
 
         let vectorHorizontal = [];
         let vectorVertical = [];
-        
-        
 
         let vectorVerticalLinea1 = [
             new Posicion(0, 0), new Posicion(0, 3), new Posicion(0, 6),
@@ -170,7 +223,6 @@
         );
 
 
-
         let vectorHorizontalLinea1 = [
             new Posicion(0, 0), new Posicion(0, 1), new Posicion(0, 2),
             new Posicion(1, 0), new Posicion(1, 1), new Posicion(1, 2),
@@ -231,12 +283,12 @@
             vectorHorizontalLinea7, vectorHorizontalLinea8, vectorHorizontalLinea9
         );
 
-        function buscarPosicionHorizontal(vectorHorizontal, x, y) {
-            for (let i = 0; i < vectorHorizontal.length; i++) {
-                for (let posicion of vectorHorizontal[i]) {
+        function buscarPosicionHorizontal(vectorVertical, x, y) {
+            for (let i = 0; i < vectorVertical.length; i++) {
+                for (let posicion of vectorVertical[i]) {
                     if (posicion.x === x && posicion.y === y) {
                         return {
-                            vectorEncontrado: vectorHorizontal[i] // Devuelve el array completo donde se encontró
+                            vectorEncontrado: vectorVertical[i] // Devuelve el array completo donde se encontró
                         };
                     }
                 }
@@ -260,8 +312,6 @@
                 vectorEncontrado: null
             };
         }
-
-
 
         
 
@@ -321,7 +371,7 @@
                  let puntoEnVectorVertical = buscarPosicionVertical(vectorVertical, i, k).vectorEncontrado;
                  let puntoEnVectorGrupal = buscarPosicionGrupal(vectorGrupal,i, k).vectorEncontrado;
 
-                 let conjuntoArrayComprobacion = new Array(3);
+                 let conjuntoArrayComprobacion = new Array();
 
                  conjuntoArrayComprobacion.push(puntoEnVectorHorizontal);
                  conjuntoArrayComprobacion.push(puntoEnVectorVertical);
@@ -338,103 +388,237 @@
         }
 
         
-        console.log(matrizPrincipal);
+        
 
-
-
+        function rellenarMatrizPorPosicion(posicionX,posicionY,numero){
+            matrizPrincipal[posicionX][posicionY].numero = numero;
+            matrizPrincipal[posicionX][posicionY].ocupado = true;
+            
+            document.getElementById(posicionX+ "" +posicionY).innerText = numero;
+        }
+        
 
         // Rellenar matriz con datos
         //===========================
+
+        function rellenarMatriz(){
+
+            //matrizPrincipal[0][0].numero = 8;
+            
+            rellenarMatrizPorPosicion(0,0,8);
+
+
+
+
+            matrizPrincipal[0][1].numero = 0;
+            
+            //matrizPrincipal[0][2].numero = 1;
+            rellenarMatrizPorPosicion(0,2,1);
+
+            matrizPrincipal[0][3].numero = 0;
+            matrizPrincipal[0][4].numero = 0;
+            matrizPrincipal[0][5].numero = 0;
+            
+            //matrizPrincipal[0][6].numero = 6;
+            rellenarMatrizPorPosicion(0,6,6);
+            
+            //matrizPrincipal[0][7].numero = 7;
+            rellenarMatrizPorPosicion(0,7,7);
+            
+            //matrizPrincipal[0][8].numero = 2;
+            rellenarMatrizPorPosicion(0,8,2);
+            
+            matrizPrincipal[1][0].numero = 0;
+            matrizPrincipal[1][1].numero = 0;
+            
+            //matrizPrincipal[1][2].numero = 7;
+            rellenarMatrizPorPosicion(1,2,7);
+            
+            matrizPrincipal[1][3].numero = 0;
+            
+            //matrizPrincipal[1][4].numero = 1;
+            rellenarMatrizPorPosicion(1,4,1);
+            
+            //matrizPrincipal[1][5].numero = 3;
+            rellenarMatrizPorPosicion(1,5,3);
+            
+            //matrizPrincipal[1][6].numero = 9;
+            rellenarMatrizPorPosicion(1,6,9);
+            
+            matrizPrincipal[1][7].numero = 0;
+            
+            //matrizPrincipal[1][8].numero = 4;
+            rellenarMatrizPorPosicion(1,8,4);
+            
+            matrizPrincipal[2][0].numero = 0;
+            
+            //matrizPrincipal[2][1].numero = 6;
+            rellenarMatrizPorPosicion(2,1,6);
+            
+            //matrizPrincipal[2][2].numero = 4;
+            rellenarMatrizPorPosicion(2,2,4);
+            
+            matrizPrincipal[2][3].numero = 0;
+            
+            //matrizPrincipal[2][4].numero = 8;
+            rellenarMatrizPorPosicion(2,4,8);
+            
+            //matrizPrincipal[2][5].numero = 2;
+            rellenarMatrizPorPosicion(2,5,2);
+            
+            matrizPrincipal[2][6].numero = 0;
+            matrizPrincipal[2][7].numero = 0;
+            matrizPrincipal[2][8].numero = 0;
+            matrizPrincipal[3][0].numero = 0;
+            
+            //matrizPrincipal[3][1].numero = 1;
+            rellenarMatrizPorPosicion(3,1,1);
+            
+            //matrizPrincipal[3][2].numero = 5;
+            rellenarMatrizPorPosicion(3,2,5);
+            
+            matrizPrincipal[3][3].numero = 0;
+            matrizPrincipal[3][4].numero = 0;
+            
+            //matrizPrincipal[3][5].numero = 3;
+            rellenarMatrizPorPosicion(3,5,3);
+            
+            matrizPrincipal[3][6].numero = 0;
+            matrizPrincipal[3][7].numero = 0;
+            
+            //matrizPrincipal[3][8].numero = 8;
+            rellenarMatrizPorPosicion(3,8,8);
+            
+            matrizPrincipal[4][0].numero = 0;
+            
+            //matrizPrincipal[4][1].numero = 7;
+            rellenarMatrizPorPosicion(4,1,7);
+            
+            matrizPrincipal[4][2].numero = 0;
+            
+            //matrizPrincipal[4][3].numero = 4;
+            rellenarMatrizPorPosicion(4,3,4);
+            
+            //matrizPrincipal[4][4].numero = 2;
+            rellenarMatrizPorPosicion(4,4,2);
+            
+            matrizPrincipal[4][5].numero = 0;
+            matrizPrincipal[4][6].numero = 0;
+            matrizPrincipal[4][7].numero = 0;
+            
+            //matrizPrincipal[4][8].numero = 1;
+            rellenarMatrizPorPosicion(4,8,1);
+            
+            matrizPrincipal[5][0].numero = 0;
+            
+            //matrizPrincipal[5][1].numero = 9;
+            rellenarMatrizPorPosicion(5,1,9);
+            
+            matrizPrincipal[5][2].numero = 0;
+            matrizPrincipal[5][3].numero = 0;
+            
+            //matrizPrincipal[5][4].numero = 1;
+            rellenarMatrizPorPosicion(5,4,1);
+            
+            matrizPrincipal[5][5].numero = 0;
+            matrizPrincipal[5][6].numero = 0;
+            matrizPrincipal[5][7].numero = 0;
+            matrizPrincipal[5][8].numero = 0;
+            matrizPrincipal[6][0].numero = 0;
+            matrizPrincipal[6][1].numero = 0;
+            matrizPrincipal[6][2].numero = 0;
+            
+            //matrizPrincipal[6][3].numero = 3;
+            rellenarMatrizPorPosicion(6,3,3);
+            
+            //matrizPrincipal[6][4].numero = 9;
+            rellenarMatrizPorPosicion(6,4,9);
+            
+            //matrizPrincipal[6][5].numero = 6;
+            rellenarMatrizPorPosicion(6,5,6);
+            
+            matrizPrincipal[6][6].numero = 0;
+            
+            //matrizPrincipal[6][7].numero = 8;
+            rellenarMatrizPorPosicion(6,7,8);
+            
+            //matrizPrincipal[6][8].numero = 4;
+            rellenarMatrizPorPosicion(6,8,4);
+            
+            matrizPrincipal[7][0].numero = 0;
+            
+            //matrizPrincipal[7][1].numero = 3;
+            rellenarMatrizPorPosicion(7,1,3);
+            
+            matrizPrincipal[7][2].numero = 0;
+            matrizPrincipal[7][3].numero = 0;
+            matrizPrincipal[7][4].numero = 0;
+            
+            //matrizPrincipal[7][5].numero = 5;
+            rellenarMatrizPorPosicion(7,5,5);
+            
+            //matrizPrincipal[7][6].numero = 1;
+            rellenarMatrizPorPosicion(7,6,1);
+            
+            //matrizPrincipal[7][7].numero = 9;
+            rellenarMatrizPorPosicion(7,7,9);
+            
+            //matrizPrincipal[7][8].numero = 6;
+            rellenarMatrizPorPosicion(7,8,6);
+            
+            //matrizPrincipal[8][0].numero = 6;
+            rellenarMatrizPorPosicion(8,0,6);
+            
+            matrizPrincipal[8][1].numero = 0;
+            matrizPrincipal[8][2].numero = 0;
+            matrizPrincipal[8][3].numero = 0;
+            
+            //matrizPrincipal[8][4].numero = 2;
+            rellenarMatrizPorPosicion(8,4,2);
+            
+            //matrizPrincipal[8][5].numero = 1;
+            rellenarMatrizPorPosicion(8,5,1);
+            
+            matrizPrincipal[8][6].numero = 0;
+            matrizPrincipal[8][7].numero = 0;
+            
+            //matrizPrincipal[8][8].numero = 5;
+            rellenarMatrizPorPosicion(8,8,5);
+
+        }
         
-        matrizPrincipal[0][0].numero = 8;
-        matrizPrincipal[0][1].numero = 0;
-        matrizPrincipal[0][2].numero = 1;
-        matrizPrincipal[0][3].numero = 0;
-        matrizPrincipal[0][4].numero = 0;
-        matrizPrincipal[0][5].numero = 0;
-        matrizPrincipal[0][6].numero = 6;
-        matrizPrincipal[0][7].numero = 7;
-        matrizPrincipal[0][8].numero = 2;
-        matrizPrincipal[1][0].numero = 0;
-        matrizPrincipal[1][1].numero = 0;
-        matrizPrincipal[1][2].numero = 7;
-        matrizPrincipal[1][3].numero = 0;
-        matrizPrincipal[1][4].numero = 1;
-        matrizPrincipal[1][5].numero = 3;
-        matrizPrincipal[1][6].numero = 9;
-        matrizPrincipal[1][7].numero = 0;
-        matrizPrincipal[1][8].numero = 4;
-        matrizPrincipal[2][0].numero = 0;
-        matrizPrincipal[2][1].numero = 6;
-        matrizPrincipal[2][2].numero = 4;
-        matrizPrincipal[2][3].numero = 0;
-        matrizPrincipal[2][4].numero = 8;
-        matrizPrincipal[2][5].numero = 2;
-        matrizPrincipal[2][6].numero = 0;
-        matrizPrincipal[2][7].numero = 0;
-        matrizPrincipal[2][8].numero = 0;
-        matrizPrincipal[3][0].numero = 0;
-        matrizPrincipal[3][1].numero = 1;
-        matrizPrincipal[3][2].numero = 5;
-        matrizPrincipal[3][3].numero = 0;
-        matrizPrincipal[3][4].numero = 0;
-        matrizPrincipal[3][5].numero = 3;
-        matrizPrincipal[3][6].numero = 0;
-        matrizPrincipal[3][7].numero = 0;
-        matrizPrincipal[3][8].numero = 8;
-        matrizPrincipal[4][0].numero = 0;
-        matrizPrincipal[4][1].numero = 7;
-        matrizPrincipal[4][2].numero = 0;
-        matrizPrincipal[4][3].numero = 4;
-        matrizPrincipal[4][4].numero = 2;
-        matrizPrincipal[4][5].numero = 0;
-        matrizPrincipal[4][6].numero = 0;
-        matrizPrincipal[4][7].numero = 0;
-        matrizPrincipal[4][8].numero = 1;
-        matrizPrincipal[5][0].numero = 0;
-        matrizPrincipal[5][1].numero = 9;
-        matrizPrincipal[5][2].numero = 0;
-        matrizPrincipal[5][3].numero = 0;
-        matrizPrincipal[5][4].numero = 1;
-        matrizPrincipal[5][5].numero = 0;
-        matrizPrincipal[5][6].numero = 0;
-        matrizPrincipal[5][7].numero = 0;
-        matrizPrincipal[5][8].numero = 0;
-        matrizPrincipal[6][0].numero = 0;
-        matrizPrincipal[6][1].numero = 0;
-        matrizPrincipal[6][2].numero = 0;
-        matrizPrincipal[6][3].numero = 3;
-        matrizPrincipal[6][4].numero = 9;
-        matrizPrincipal[6][5].numero = 6;
-        matrizPrincipal[6][6].numero = 0;
-        matrizPrincipal[6][7].numero = 8;
-        matrizPrincipal[6][8].numero = 4;
-        matrizPrincipal[7][0].numero = 0;
-        matrizPrincipal[7][1].numero = 3;
-        matrizPrincipal[7][2].numero = 0;
-        matrizPrincipal[7][3].numero = 0;
-        matrizPrincipal[7][4].numero = 0;
-        matrizPrincipal[7][5].numero = 5;
-        matrizPrincipal[7][6].numero = 1;
-        matrizPrincipal[7][7].numero = 9;
-        matrizPrincipal[7][8].numero = 6;
-        matrizPrincipal[8][0].numero = 6;
-        matrizPrincipal[8][1].numero = 0;
-        matrizPrincipal[8][2].numero = 0;
-        matrizPrincipal[8][3].numero = 0;
-        matrizPrincipal[8][4].numero = 2;
-        matrizPrincipal[8][5].numero = 1;
-        matrizPrincipal[8][6].numero = 0;
-        matrizPrincipal[8][7].numero = 0;
-        matrizPrincipal[8][8].numero = 5;
         
 
-        // // Recorrer la matriz y sus elementos
-        // for (let i = 0; i < 9; i++) {
-        //     for (let j = 0; j < 9; j++) {
-        //         console.log("matrizPrincipal["+i+"]["+j+"]=null;");
-        //     }
-        // }
+        rellenarMatriz();
+
+        
+        
+        // Recorrer la matriz y sus elementos
+         for (let i = 0; i < 9; i++) {
+             for (let j = 0; j < 9; j++) {
+                //Si no esta ocupado entonces procedemos a comprobar.
+                if (!matrizPrincipal[i][j].ocupado){
+                    let conjuntoDeVectores = matrizPrincipal[i][j].vectores;
+
+                    //Tenemos array de 3 vectores.
+
+                    for (let g = 0; g < 2; g++) {
+                        for (let k = 0; k < conjuntoDeVectores[g].length; k++) {                        
+                            if(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].ocupado){
+                                //Introducimos el numero que existe en todas las tablas horizontal , vertical , y grupal.
+                                matrizPrincipal[i][j].agregarValorPosibleValores(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].getNumero())
+                            }
+                        }
+                    }                    
+
+                }
+
+                
+             }
+         }
+
+
+         console.log(matrizPrincipal);
        
 
     </script>
