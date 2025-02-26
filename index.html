@@ -522,13 +522,12 @@
             
             
             
-            matrizPrincipal[1][0].numero = 0;
-            matrizPrincipal[1][1].numero = 0;
+           
             
             
             rellenarMatrizPorPosicion(1,2,7);
             
-            matrizPrincipal[1][3].numero = 0;
+           
             
             
             rellenarMatrizPorPosicion(1,4,1);
@@ -539,12 +538,12 @@
             
             rellenarMatrizPorPosicion(1,6,9);
             
-            matrizPrincipal[1][7].numero = 0;
+            
             
             
             rellenarMatrizPorPosicion(1,8,4);
             
-            matrizPrincipal[2][0].numero = 0;
+            
             
             
             rellenarMatrizPorPosicion(2,1,6);
@@ -552,7 +551,7 @@
             
             rellenarMatrizPorPosicion(2,2,4);
             
-            matrizPrincipal[2][3].numero = 0;
+            
             
             
             rellenarMatrizPorPosicion(2,4,8);
@@ -560,10 +559,7 @@
             
             rellenarMatrizPorPosicion(2,5,2);
             
-            matrizPrincipal[2][6].numero = 0;
-            matrizPrincipal[2][7].numero = 0;
-            matrizPrincipal[2][8].numero = 0;
-            matrizPrincipal[3][0].numero = 0;
+         
             
             
             rellenarMatrizPorPosicion(3,1,1);
@@ -571,24 +567,20 @@
             
             rellenarMatrizPorPosicion(3,2,5);
             
-            matrizPrincipal[3][3].numero = 0;
-            matrizPrincipal[3][4].numero = 0;
-            
+         
             
             rellenarMatrizPorPosicion(3,5,3);
-            
-            matrizPrincipal[3][6].numero = 0;
-            matrizPrincipal[3][7].numero = 0;
+        
             
             
             rellenarMatrizPorPosicion(3,8,8);
             
-            matrizPrincipal[4][0].numero = 0;
+          
             
             
             rellenarMatrizPorPosicion(4,1,7);
             
-            matrizPrincipal[4][2].numero = 0;
+         
             
             
             rellenarMatrizPorPosicion(4,3,4);
@@ -596,31 +588,22 @@
             
             rellenarMatrizPorPosicion(4,4,2);
             
-            matrizPrincipal[4][5].numero = 0;
-            matrizPrincipal[4][6].numero = 0;
-            matrizPrincipal[4][7].numero = 0;
+            
             
             
             rellenarMatrizPorPosicion(4,8,1);
             
-            matrizPrincipal[5][0].numero = 0;
+          
             
             
             rellenarMatrizPorPosicion(5,1,9);
             
-            matrizPrincipal[5][2].numero = 0;
-            matrizPrincipal[5][3].numero = 0;
+        
             
             
             rellenarMatrizPorPosicion(5,4,1);
             
-            // matrizPrincipal[5][5].numero = 0;
-            // matrizPrincipal[5][6].numero = 0;
-            // matrizPrincipal[5][7].numero = 0;
-            // matrizPrincipal[5][8].numero = 0;
-            // matrizPrincipal[6][0].numero = 0;
-            // matrizPrincipal[6][1].numero = 0;
-            // matrizPrincipal[6][2].numero = 0;
+      
             
             
             rellenarMatrizPorPosicion(6,3,3);
@@ -631,7 +614,7 @@
             
             rellenarMatrizPorPosicion(6,5,6);
             
-            matrizPrincipal[6][6].numero = 0;
+        
             
             
             rellenarMatrizPorPosicion(6,7,8);
@@ -639,14 +622,12 @@
             
             rellenarMatrizPorPosicion(6,8,4);
             
-            matrizPrincipal[7][0].numero = 0;
+            
             
             
             rellenarMatrizPorPosicion(7,1,3);
             
-            matrizPrincipal[7][2].numero = 0;
-            matrizPrincipal[7][3].numero = 0;
-            matrizPrincipal[7][4].numero = 0;
+         
             
             
             rellenarMatrizPorPosicion(7,5,5);
@@ -663,19 +644,12 @@
             
             rellenarMatrizPorPosicion(8,0,6);
             
-            matrizPrincipal[8][1].numero = 0;
-            matrizPrincipal[8][2].numero = 0;
-            matrizPrincipal[8][3].numero = 0;
-            
-            
+          
             rellenarMatrizPorPosicion(8,4,2);
             
             
             rellenarMatrizPorPosicion(8,5,1);
-            
-            matrizPrincipal[8][6].numero = 0;
-            matrizPrincipal[8][7].numero = 0;
-            
+          
             
             rellenarMatrizPorPosicion(8,8,5);
 
@@ -702,10 +676,16 @@
 
                     //Tenemos array de 3 vectores.
 
-                    for (let g = 0; g < 2; g++) {
+                    for (let g = 0; g < 3; g++) {
                         for (let k = 0; k < conjuntoDeVectores[g].length; k++) {                        
                             if(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].ocupado){
                                 //Introducimos el numero que existe en todas las tablas horizontal , vertical , y grupal.
+
+                                //Esta introduciendo de más .
+                                // esta introduciendo 6 en 0,1 y deberia haber 2.
+
+
+
                                 matrizPrincipal[i][j].agregarValorPosibleValores(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].getNumero())
                             }
                         }
@@ -729,7 +709,7 @@
                     if(matrizPrincipal[i][j].posiblesValores.size == 1){
                         console.log("se ha encontrado 1     "+i+"   "+j)
                     }else{
-                        console.log(matrizPrincipal[i][j].posiblesValores.size)
+                        console.log(matrizPrincipal[i][j].posiblesValores.size+"   i:"+i+ "  j:"+j)
                     }
 
 
