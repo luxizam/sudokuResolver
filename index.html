@@ -9,9 +9,7 @@
     <h1>arrays de javascript</h1>
     <ul id="usuarios"></ul>
 
-
-    <button onclick="miFuncion()">Haz clic aquí</button>
-
+    <button style="margin:40px;" onclick="miFuncion()">Haz clic aquí</button>
 
     <style>
 
@@ -163,13 +161,7 @@
 
     <script>
 
-
-        function miFuncion() {
-            document.getElementById('mensaje').innerText = '¡El botón ha sido presionado!';
-        }
-
-        
-        
+ 
         class Posicion {
             constructor(x, y) {
                 this.x = x; // Coordenada x
@@ -183,11 +175,7 @@
                 this.posicion = posicion;      // Objeto de tipo Posicion
                 this.vectores = vectores;      // Array con dos elementos de tipo Posicion
                 this.ocupado = ocupado;    // Booleano que indica si está rellenado
-
-                //this.posiblesValores = new Array(9).fill(null); // Array vacio de los posibles valores.
-
                 this.posiblesValores = new Map();
-
                 this.numero = numero; // Número entero asociado a la casilla
             }
 
@@ -490,7 +478,6 @@
             document.getElementById(posicionX+ "" +posicionY).innerText = numero;
 
             document.getElementById(posicionX+ "" +posicionY).className = "ocupado";
-
         }
         
 
@@ -499,158 +486,45 @@
 
         function rellenarMatriz(){
 
-            
-            
             rellenarMatrizPorPosicion(0,0,8);
-
             rellenarMatrizPorPosicion(0,2,1);
             rellenarMatrizPorPosicion(0,6,6);
             rellenarMatrizPorPosicion(0,7,7);
-            rellenarMatrizPorPosicion(0,8,2);
-            
-            
-            rellenarMatrizPorPosicion(0,2,1);
-
-       
-            
-            
-            
-            
-            
-            rellenarMatrizPorPosicion(0,7,7);
-            
-            
-            
-            
-           
-            
-            
-            rellenarMatrizPorPosicion(1,2,7);
-            
-           
-            
-            
-            rellenarMatrizPorPosicion(1,4,1);
-            
-            
-            rellenarMatrizPorPosicion(1,5,3);
-            
-            
-            rellenarMatrizPorPosicion(1,6,9);
-            
-            
-            
-            
-            rellenarMatrizPorPosicion(1,8,4);
-            
-            
-            
-            
-            rellenarMatrizPorPosicion(2,1,6);
-            
-            
-            rellenarMatrizPorPosicion(2,2,4);
-            
-            
-            
-            
-            rellenarMatrizPorPosicion(2,4,8);
-            
-            
-            rellenarMatrizPorPosicion(2,5,2);
-            
-         
-            
-            
-            rellenarMatrizPorPosicion(3,1,1);
-            
-            
-            rellenarMatrizPorPosicion(3,2,5);
-            
-         
-            
-            rellenarMatrizPorPosicion(3,5,3);
-        
-            
-            
-            rellenarMatrizPorPosicion(3,8,8);
-            
-          
-            
-            
-            rellenarMatrizPorPosicion(4,1,7);
-            
-         
-            
-            
-            rellenarMatrizPorPosicion(4,3,4);
-            
-            
-            rellenarMatrizPorPosicion(4,4,2);
-            
-            
-            
-            
+            rellenarMatrizPorPosicion(0,8,2);            
+            rellenarMatrizPorPosicion(0,2,1);            
+            rellenarMatrizPorPosicion(0,7,7);            
+            rellenarMatrizPorPosicion(1,2,7);            
+            rellenarMatrizPorPosicion(1,4,1);            
+            rellenarMatrizPorPosicion(1,5,3);            
+            rellenarMatrizPorPosicion(1,6,9);            
+            rellenarMatrizPorPosicion(1,8,4);            
+            rellenarMatrizPorPosicion(2,1,6);            
+            rellenarMatrizPorPosicion(2,2,4);            
+            rellenarMatrizPorPosicion(2,4,8);            
+            rellenarMatrizPorPosicion(2,5,2);            
+            rellenarMatrizPorPosicion(3,1,1);            
+            rellenarMatrizPorPosicion(3,2,5);            
+            rellenarMatrizPorPosicion(3,5,3);        
+            rellenarMatrizPorPosicion(3,8,8);            
+            rellenarMatrizPorPosicion(4,1,7);            
+            rellenarMatrizPorPosicion(4,3,4);            
+            rellenarMatrizPorPosicion(4,4,2);            
             rellenarMatrizPorPosicion(4,8,1);
-            
-          
-            
-            
-            rellenarMatrizPorPosicion(5,1,9);
-            
-        
-            
-            
-            rellenarMatrizPorPosicion(5,4,1);
-            
-      
-            
-            
-            rellenarMatrizPorPosicion(6,3,3);
-            
-            
-            rellenarMatrizPorPosicion(6,4,9);
-            
-            
-            rellenarMatrizPorPosicion(6,5,6);
-            
-        
-            
-            
+            rellenarMatrizPorPosicion(5,1,9);            
+            rellenarMatrizPorPosicion(5,4,1);            
+            rellenarMatrizPorPosicion(6,3,3);            
+            rellenarMatrizPorPosicion(6,4,9);            
+            rellenarMatrizPorPosicion(6,5,6);            
             rellenarMatrizPorPosicion(6,7,8);
-            
-            
             rellenarMatrizPorPosicion(6,8,4);
-            
-            
-            
-            
-            rellenarMatrizPorPosicion(7,1,3);
-            
-         
-            
-            
-            rellenarMatrizPorPosicion(7,5,5);
-            
-            
-            rellenarMatrizPorPosicion(7,6,1);
-            
-            
-            rellenarMatrizPorPosicion(7,7,9);
-            
-            
-            rellenarMatrizPorPosicion(7,8,6);
-            
-            
-            rellenarMatrizPorPosicion(8,0,6);
-            
-          
-            rellenarMatrizPorPosicion(8,4,2);
-            
-            
+            rellenarMatrizPorPosicion(7,1,3);            
+            rellenarMatrizPorPosicion(7,5,5);                        
+            rellenarMatrizPorPosicion(7,6,1);                        
+            rellenarMatrizPorPosicion(7,7,9);                        
+            rellenarMatrizPorPosicion(7,8,6);                        
+            rellenarMatrizPorPosicion(8,0,6);                      
+            rellenarMatrizPorPosicion(8,4,2);              
             rellenarMatrizPorPosicion(8,5,1);
-          
-            
             rellenarMatrizPorPosicion(8,8,5);
 
         }
@@ -660,64 +534,122 @@
         rellenarMatriz();
 
 
-
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
         
+        function devuelveLosValoresFaltantes(posiblesValores){
 
-        // Recorrer la matriz y sus elementos
-         for (let i = 0; i < 9; i++) {
-             for (let j = 0; j < 9; j++) {
-                //Si no esta ocupado entonces procedemos a comprobar.
-                if (!matrizPrincipal[i][j].ocupado){
-                    let conjuntoDeVectores = matrizPrincipal[i][j].vectores;
+            // Crear un conjunto con los valores del 0 al 8
+            let allValues = new Set([1, 2, 3, 4, 5, 6, 7, 8 ,9]);
 
-                    //Tenemos array de 3 vectores.
-
-                    for (let g = 0; g < 3; g++) {
-                        for (let k = 0; k < conjuntoDeVectores[g].length; k++) {                        
-                            if(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].ocupado){
-                                //Introducimos el numero que existe en todas las tablas horizontal , vertical , y grupal.
-
-                                //Esta introduciendo de más .
-                                // esta introduciendo 6 en 0,1 y deberia haber 2.
+            // Iterar sobre las claves del Map y eliminar los valores encontrados
+            
+            posiblesValores.forEach((value, key) => {
+            allValues.delete(key);
+            });
+            return allValues;
+        }
 
 
 
-                                matrizPrincipal[i][j].agregarValorPosibleValores(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].getNumero())
+
+
+         
+
+
+
+
+        function miFuncion() {
+            console.clear();
+
+
+            // Recorrer la matriz y sus elementos y cargarlo de valores. y POSIBLES VALORES
+
+
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    //Si no esta ocupado entonces procedemos a comprobar.
+                    if (!matrizPrincipal[i][j].ocupado){
+                        let conjuntoDeVectores = matrizPrincipal[i][j].vectores;
+
+                        //Tenemos array de 3 vectores.
+
+                        for (let g = 0; g < 3; g++) {
+                            for (let k = 0; k < conjuntoDeVectores[g].length; k++) {                        
+                                if(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].ocupado){
+                                    //Introducimos el numero que existe en todas las tablas horizontal , vertical , y grupal.
+                                    //Esta introduciendo de más .
+                                    // esta introduciendo 6 en 0,1 y deberia haber 2.
+                                    matrizPrincipal[i][j].agregarValorPosibleValores(matrizPrincipal[conjuntoDeVectores[g][k].x][conjuntoDeVectores[g][k].y].getNumero())
+                                }
                             }
+                        }                    
+
+                    }        
+                }
+            }
+               
+
+
+            //console.log(matrizPrincipal);
+
+
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    //Si no esta ocupado entonces procedemos a comprobar.
+                    if (!matrizPrincipal[i][j].ocupado){
+
+                        let resultado = devuelveLosValoresFaltantes(matrizPrincipal[i][j].posiblesValores)
+
+                        let miArrayResultado = Array.from(resultado);
+                        
+
+                        console.log("i["+i+"]     j["+j+"]")
+
+                        if(miArrayResultado.length==1){
+                            //console.log("HEMOS ENCONTRADO 1 RESULTADO     "+miArrayResultado[0]);
+
+                            rellenarMatrizPorPosicion(i,j,miArrayResultado[0]);
+
+
                         }
-                    }                    
-
-                }
-
-                
-             }
-         }
-
-
-         console.log(matrizPrincipal);
-
-
-         for (let i = 0; i < 9; i++) {
-             for (let j = 0; j < 9; j++) {
-                //Si no esta ocupado entonces procedemos a comprobar.
-                if (!matrizPrincipal[i][j].ocupado){
-
-                    if(matrizPrincipal[i][j].posiblesValores.size == 1){
-                        console.log("se ha encontrado 1     "+i+"   "+j)
-                    }else{
-                        console.log(matrizPrincipal[i][j].posiblesValores.size+"   i:"+i+ "  j:"+j)
+                    
                     }
-
-
+                    
                 }
+            }
 
-                
-             }
-         }
+
+            // Debemos limpiar todos los posibles resultados para dejarlo vacios para la siguiente ronda de aciertos.
+
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    //Si no esta ocupado entonces procedemos a comprobar.
+                    if (!matrizPrincipal[i][j].ocupado){
+
+                        matrizPrincipal[i][j].posiblesValores.clear();
+                        
+
+                    }        
+                }
+            }
+
+
+
+
+            
+
+        }
+
+
+
+
+
+         // Repetimos el proceso hasta que todo el tablero este relleno.
+
+        
 
 
          
